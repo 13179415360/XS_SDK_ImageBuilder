@@ -1,0 +1,15 @@
+{
+    "mtk/package/kernel/connectivity/conninfra":[],
+    "openwrt/package/mtk/kernel/connectivity/conninfra":[],
+    "mtk/package/kernel/connectivity/gps":[],
+    "openwrt/package/mtk/kernel/connectivity/gps_ko":[],
+    "mtk/package/kernel/met_drv_v2":[],
+    "openwrt/package/mtk/kernel/met_drv_v2":[],
+    "mtk/package/libs/libnandapi":[],
+    "openwrt/package/mtk/libs/libnandapi":[],
+    "openwrt":["mtk","mt6880","mt6880_m2"],
+    "mtk/ext_kernel-4.19":[],
+    "mtk/tools/dct":["old_dct","python"],
+    "openwrt/target/linux/mt6880":[],
+    "openwrt/target/linux/mt6880_m2":[]
+}

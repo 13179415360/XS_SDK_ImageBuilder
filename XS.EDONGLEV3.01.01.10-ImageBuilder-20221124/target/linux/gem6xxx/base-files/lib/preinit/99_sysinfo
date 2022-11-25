@@ -1,0 +1,78 @@
+# defaults
+MEDIATEK_BOARD_NAME="MediaTek generic board"
+MEDIATEK_BOARD_MODEL="Generic MediaTek"
+
+do_sysinfo_mediatek() {
+	local board
+	local model
+	local compatible
+
+	[ -e "/tmp/sysinfo/" ] || mkdir -p "/tmp/sysinfo/"
+
+	model="$( cat /proc/device-tree/model )"
+	compatible="$( cat /proc/device-tree/compatible )"
+
+	case "$compatible" in
+    mediatek,xs5g01_cpe*)
+		model=xs5g01_cpe;
+		board=xs5g01_cpe;
+		;;
+    mediatek,xs5g01_mini*)
+		model=xs5g01_mini;
+		board=xs5g01_mini;
+		;;
+    mediatek,xs5g01_zinwell*)
+		model=xs5g01_zinwell;
+		board=xs5g01_zinwell;
+		;;
+    mediatek,xs5g01_goodway*)
+		model=xs5g01_goodway;
+		board=xs5g01_goodway;
+		;;
+    mediatek,xs5g01_proscend*)
+		model=xs5g01_proscend;
+		board=xs5g01_proscend;
+		;;
+    mediatek,xs5g01_5gbox*)
+		model=xs5g01_5gbox;
+		board=xs5g01_5gbox;
+		;;
+    mediatek,xs5g01_odu*)
+		model=xs5g01_odu;
+		board=xs5g01_odu;
+		;;
+    mediatek,xs5g01_edonglev3*)
+		model=xs5g01_edonglev3;
+		board=xs5g01_edonglev3;
+		;;
+    mediatek,xs5g01_GOODWAYV3*)
+		model=xs5g01_GOODWAYV3;
+		board=xs5g01_GOODWAYV3;
+		;;
+	mediatek,evb6890v1_64_cpe*)
+		model="evb6890v1_64_cpe";
+		board="evb6890v1_64_cpe";
+		;;
+	mediatek,evb6890v1_64_mifi*)
+		model="evb6890v1_64_mifi";
+		board="evb6890v1_64_mifi";
+		;;
+	mediatek,evb6890v1_64_odu*)
+		model="evb6890v1_64_odu";
+		board="evb6890v1_64_odu";
+		;;
+	esac
+
+	if [ "$board" != "" ]; then
+		MEDIATEK_BOARD_NAME="$board"
+	fi
+
+	if [ "$model" != "" ]; then
+		MEDIATEK_BOARD_MODEL="$model"
+	fi
+
+	echo "$MEDIATEK_BOARD_NAME" > /tmp/sysinfo/board_name
+	echo "$MEDIATEK_BOARD_MODEL" > /tmp/sysinfo/model
+}
+
+boot_hook_add preinit_main do_sysinfo_mediatek
