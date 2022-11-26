@@ -1,0 +1,5 @@
+config usb 'adb'
+	option serial '0123456789ABCDEF'
+
+config usb 'config'
+	option mipcboot '0'

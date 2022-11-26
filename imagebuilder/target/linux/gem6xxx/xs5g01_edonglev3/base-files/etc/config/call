@@ -1,0 +1,5 @@
+config forward 'forward'
+	option always_forward ''
+	option busy ''
+	option unanswered ''
+	option unreachable ''

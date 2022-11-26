@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Define LED initial status setting, which stores in /etc/board.json and system uci.
+# /etc/init.d/led script loads uci settings and apply it to driver.
+. /lib/functions/uci-defaults.sh
+
+board_config_update
+
+ucidef_set_led_default "9501" "gpio" "led9501:red:gpio" "0"
+ucidef_set_led_default "9502" "gpio" "led9502:red:gpio" "0"
+ucidef_set_led_default "9504" "gpio" "led9504:green:gpio" "0"
+ucidef_set_led_default "9505" "gpio" "led9505:red:gpio" "0"
+ucidef_set_led_default "9506" "gpio" "led9506:green:gpio" "0"
+
+ucidef_set_led_default "9515" "pmic" "led9515:green:pmic" "0"
+ucidef_set_led_default "9516" "pmic" "led9516:green:pmic" "0"
+# system led was updated by diag.sh during boot-up & shutdown process, no need to initialize here.
+# ucidef_set_led_default "9517" "system" "led9517:red:system" "1"
+
+board_config_flush
+
+exit 0
