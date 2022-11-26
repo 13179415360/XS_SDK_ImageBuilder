@@ -1,5 +1,0 @@
-#!/bin/sh
-
-if [ "$ACTION" = add ]; then
-	[ -f /sbin/smp.sh ] && /sbin/smp.sh
-fi
